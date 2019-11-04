@@ -1,28 +1,35 @@
-const puppeteer = require('puppeteer');
+const express = require('express');
+const app = express();
 
-(async () => {
-    let movieUrl = 'http://103.194.171.75/';
+const PORT = 3000;
 
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
+//CONFIG indoxxi
+const URL = 'http://103.194.171.75';
+const {getMovie} = require('./controller/getMovie');
+const {getPlayUrl} = require('./controller/play');
 
-    await page.goto(movieUrl,{waitUntil:'networkidle2'});
+//ejs
+app.set('view engine', 'ejs');
 
-    let data = await page.evaluate(()=>{
-        let x = document.querySelectorAll('div[class=ml-item] > a');
-        let y = document.querySelectorAll('img.lazy.thumb.mli-thumb');
-        let movieData = [];
-        for (let i = 0; i < x.length; i++) {
-            movieData.push({
-                'movieUrl':x[i].href,
-                'movieTitle':x[i].title,
-                'movieImage':y[i].src
-            });
-        }
-        return {
-            movieData
-        }
-    });
-    console.log(data);
-    await browser.close();
-})()
+//body parser
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
+//router
+app.use('/', require('./router/mainRoute'));
+
+app.listen(PORT,(err)=>{
+    if(err){
+        console.log(err);
+    }
+    console.log(`server started at port ${PORT}`);
+})
+
+// (async () => {
+
+//     await getMovie(URL, (data)=>{
+//         console.log(data);
+//     })
+
+// })()
+

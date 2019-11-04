@@ -1,0 +1,19 @@
+<% include ./header %>
+<div class="card">
+    <div class="card-body">
+        <div class="card-columns">
+            <%var movieList = JSON.stringify(data)%>
+            <%data.forEach(movieData=>{%>
+            <div class="card">
+              <img src="<%=movieData.movieImage%>" class="card-img-top img-fluid" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><%=movieData.movieTitle%></h5>
+                <a class="btn btn-block btn-info" href="/play?url=<%=movieData.movieUrl%>/play">Play</a>
+              </div>
+            </div>
+            <%})%>
+          </div>
+    </div>
+</div>
+<% include ./footer %>
+
