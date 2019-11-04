@@ -5,9 +5,6 @@ const PORT = 3000;
 
 //CONFIG indoxxi
 const URL = 'http://103.194.171.75';
-const {getMovie} = require('./controller/getMovie');
-const {getPlayUrl} = require('./controller/play');
-
 //ejs
 app.set('view engine', 'ejs');
 

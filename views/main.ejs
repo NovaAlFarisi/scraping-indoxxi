@@ -1,19 +1,34 @@
 <% include ./header %>
+<div class="card mt-3">
+    <div class="card-body">
+        <form method="GET" action="/search">
+            <div class="form-row align-items-center">
+                <div class="col-md-9">
+                    <label class="sr-only" for="inlineFormInputGroup">Nama Film</label>
+                        <input type="text" class="form-control" name="movieName" id="inlineFormInputGroup"
+                            placeholder="Nama Film">
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary btn-block mb-1">Cari</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <div class="card">
     <div class="card-body">
         <div class="card-columns">
             <%var movieList = JSON.stringify(data)%>
             <%data.forEach(movieData=>{%>
             <div class="card">
-              <img src="<%=movieData.movieImage%>" class="card-img-top img-fluid" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><%=movieData.movieTitle%></h5>
-                <a class="btn btn-block btn-info" href="/play?url=<%=movieData.movieUrl%>/play">Play</a>
-              </div>
+                <img src="<%=movieData.movieImage%>" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><%=movieData.movieTitle%></h5>
+                    <a class="btn btn-block btn-info" href="/play?url=<%=movieData.movieUrl%>/play">Play</a>
+                </div>
             </div>
             <%})%>
-          </div>
+        </div>
     </div>
 </div>
 <% include ./footer %>
-

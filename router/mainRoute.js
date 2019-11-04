@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getMovie} = require('../controller/getMovie');
-const {getPlayUrl} = require('../controller/play');
+const {getMovie,getPlayUrl, search} = require('../controller/movie');
 
 
 router.get('/', async (req,res)=>{
@@ -21,4 +20,11 @@ router.get('/play', async (req,res)=>{
     res.redirect(data[0].url);
 });
 
+router.get('/search', async (req,res)=>{
+    let data = [];
+    await getMovie(req.query.movieName, (result)=>{
+        data.push(result.movieData);
+    })
+    res.render('main', {'data':data[0]});
+});
 module.exports = router;
