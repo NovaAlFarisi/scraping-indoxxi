@@ -5,10 +5,11 @@ const {getMovie,getPlayUrl, search} = require('../controller/movie');
 
 router.get('/', async (req,res)=>{
     let data = [];
-    await getMovie((result)=>{
+    await getMovie(null, (result)=>{
         data.push(result.movieData);
     })
-    res.render('main', {'data':data[0]});
+    console.log(data);
+    res.render('main', {'data':data[0], 'pageTitle':'New Update!'});
 });
 
 router.get('/play', async (req,res)=>{
@@ -22,9 +23,39 @@ router.get('/play', async (req,res)=>{
 
 router.get('/search', async (req,res)=>{
     let data = [];
-    await getMovie(req.query.movieName, (result)=>{
+    await search({'search':req.query.movieName}, (result)=>{
         data.push(result.movieData);
     })
-    res.render('main', {'data':data[0]});
+    res.render('main', {'data':data[0], 'pageTitle':`Searching ${req.query.movieName}...`});
+});
+router.get('/genre', async (req,res)=>{
+    let data = [];
+    await search({'genre':req.query.name}, (result)=>{
+        data.push(result.movieData);
+    })
+    res.render('main', {'data':data[0], 'pageTitle':`Genre: ${req.query.name}`});
+});
+
+router.get('/now-playing', async(req,res)=>{
+    let data = []
+    await getMovie('21cineplex-now-playing', (result)=>{
+        data.push(result.movieData);
+    });
+    res.render('main',{'data':data[0], 'pageTitle':'Sedang Tayang Di Bioskop!'});
+});
+
+router.get('/featured', async(req,res)=>{
+    let data = []
+    await getMovie('21cineplex-unggulan', (result)=>{
+        data.push(result.movieData);
+    });
+    res.render('main',{'data':data[0], 'pageTitle':'Unggulan'});
+});
+router.get('/test', async(req,res)=>{
+    let data = []
+    await getMovie('s/joker', (result)=>{
+        data.push(result.movieData);
+    });
+    res.render('main',{'data':data[0]});
 });
 module.exports = router;

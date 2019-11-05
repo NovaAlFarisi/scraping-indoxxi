@@ -1,12 +1,13 @@
 <% include ./header %>
+
 <div class="card mt-3">
     <div class="card-body">
         <form method="GET" action="/search">
             <div class="form-row align-items-center">
                 <div class="col-md-9">
                     <label class="sr-only" for="inlineFormInputGroup">Nama Film</label>
-                        <input type="text" class="form-control" name="movieName" id="inlineFormInputGroup"
-                            placeholder="Nama Film">
+                    <input type="text" class="form-control" name="movieName" id="inlineFormInputGroup"
+                        placeholder="Nama Film">
                 </div>
                 <div class="col-md-3">
                     <button type="submit" class="btn btn-primary btn-block mb-1">Cari</button>
@@ -15,16 +16,30 @@
         </form>
     </div>
 </div>
-<div class="card">
+<div class="alert mt-3 alert-success" role="alert">
+    <h4 class="alert-heading">Perhatian!</h4>
+    <p>
+        Ada banyak kemungkinan jika teman-teman masih menemukan banyak broken link / link yang tidak bisa dibuka,
+        dikarenakan
+        sistem kami yang masih dalam tahap pengembangan untuk lebih baik.
+    </p>
+    <hr>
+    <p class="mb-0">Terimakasih</p>
+</div>
+<div class="card mt-3">
     <div class="card-body">
+        <h1><%=pageTitle%></h1>
         <div class="card-columns">
             <%var movieList = JSON.stringify(data)%>
             <%data.forEach(movieData=>{%>
             <div class="card">
-                <img src="<%=movieData.movieImage%>" class="card-img-top img-fluid" alt="...">
+                <a href="/play?url=<%=movieData.movieUrl%>/play"><img src="<%=movieData.movieImage%>" class="card-img-top img-fluid" alt="<%=movieData.movieTitle%>"></a>
                 <div class="card-body">
-                    <h5 class="card-title"><%=movieData.movieTitle%></h5>
-                    <a class="btn btn-block btn-info" href="/play?url=<%=movieData.movieUrl%>/play">Play</a>
+                    <span class="badge badge-pill badge-dark"><%=movieData.movieQuality%></span>
+                    <span class="badge badge-pill badge-info"><i class="fa fa-star"></i>
+                        <%=movieData.movieRating%></span>
+                    <a href="/play?url=<%=movieData.movieUrl%>/play"><h5 class="card-title"><%=movieData.movieTitle%></h5></a>
+                    <a class="btn btn-block btn-info" href="/play?url=<%=movieData.movieUrl%>/play"><span class="fa fa-rocket"></span></a>
                 </div>
             </div>
             <%})%>

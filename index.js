@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 
 //CONFIG indoxxi
-const URL = 'http://103.194.171.75';
+const URL = 'http://103.194.171.75'; 
 //ejs
 app.set('view engine', 'ejs');
 

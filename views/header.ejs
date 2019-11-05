@@ -6,8 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/750490ddfb.js" crossorigin="anonymous"></script>
     <title>Hello, world!</title>
   </head>
   <body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">IndoMovie</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/featured">Unggulan</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/now-playing">Di Bioskop Sekarang</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Genre
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/genre?name=action">Action</a>
+                    <a class="dropdown-item" href="/genre?name=comedy">Comedy</a>
+                    <a class="dropdown-item" href="/genre?name=fantasy">Fantasy</a>
+                    <a class="dropdown-item" href="/genre?name=romance">Romance</a>
+                    <a class="dropdown-item" href="/genre?name=family">Family</a>
+                    <a class="dropdown-item" href="/genre?name=adventure">Adventure</a>
+                    <a class="dropdown-item" href="/genre?name=crime">Crime</a>
+                    <a class="dropdown-item" href="/genre?name=sci-fi">Sci-fi</a>
+                    <a class="dropdown-item" href="/genre?name=sport">Sport</a>
+                    <a class="dropdown-item" href="/genre?name=animation">Animation</a>
+                    <a class="dropdown-item" href="/genre?name=drama">Drama</a>
+                    <a class="dropdown-item" href="/genre?name=mystery">Mystery</a>
+                    <a class="dropdown-item" href="/genre?name=thriller">Thriller</a>
+                    <a class="dropdown-item" href="/genre?name=war">War</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
